@@ -1,10 +1,11 @@
-package com.github.alecbuivhp.githubclient;
+package com.github.alecbuivhp.githubclient.view.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import com.github.alecbuivhp.githubclient.R;
 
 public class MainActivity extends AppCompatActivity {
     EditText searchBox;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         searchBox.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 String searchInput = searchBox.getText().toString();
-                if(!searchInput.equals("")){
+                if (!searchInput.equals("")) {
                     Intent intent = new Intent(MainActivity.this, SearchResultActivity.class);
                     intent.putExtra("search_input", searchInput);
                     startActivity(intent);

@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id("com.apollographql.apollo").version("2.5.9")
 }
 
 android {
@@ -36,4 +37,26 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Architecture Components
+    def lifecycle_version = "2.3.1"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+
+    // Paging
+    def paging_version = "3.0.1"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // Rx
+    def rx_version = "3.0.0"
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxjava:$rx_version"
+    // RxAndroid
+    implementation "io.reactivex.rxjava3:rxandroid:$rx_version"
+
+    // Apollo Android
+    def apollo_version = "2.5.9"
+    implementation "com.apollographql.apollo:apollo-runtime:$apollo_version"
 }
