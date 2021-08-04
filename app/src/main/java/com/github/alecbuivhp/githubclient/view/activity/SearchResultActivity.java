@@ -52,7 +52,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 .build();
 
         return ApolloClient.builder()
-                .serverUrl(BuildConfig.API_KEY)
+                .serverUrl(BuildConfig.GITHUB_URL)
                 .okHttpClient(okHttp)
                 .build();
     }
