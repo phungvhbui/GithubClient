@@ -89,4 +89,4 @@ lint/tmp/
 *.hprof
 
 # Properties
-/gradle.properties
+gradle.properties
