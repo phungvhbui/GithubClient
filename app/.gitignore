@@ -1,1 +1,2 @@
 /build
+!/src/main/graphql/com.github.alecbuivhp.githubclient/.graphqlconfig
