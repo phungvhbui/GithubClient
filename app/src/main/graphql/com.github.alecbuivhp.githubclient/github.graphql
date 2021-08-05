@@ -8,7 +8,6 @@ query SearchUser($query: String!, $type: SearchType!, $first: Int, $after: Strin
         edges {
             node {
                 ... on User {
-                    id
                     name
                     avatarUrl
                     login
@@ -16,5 +15,22 @@ query SearchUser($query: String!, $type: SearchType!, $first: Int, $after: Strin
                 }
             }
         }
+    }
+}
+
+query GetUser($login: String!) {
+    user(login: $login) {
+        avatarUrl
+        bio
+        company
+        following {
+            totalCount
+        }
+        followers {
+            totalCount
+        }
+        login
+        name
+        location
     }
 }

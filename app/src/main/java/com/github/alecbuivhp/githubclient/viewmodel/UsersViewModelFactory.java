@@ -6,16 +6,20 @@ import androidx.lifecycle.ViewModelProvider;
 import org.jetbrains.annotations.NotNull;
 
 public class UsersViewModelFactory implements ViewModelProvider.Factory {
-    private final String query;
+    private final String input;
 
-    public UsersViewModelFactory(String query) {
-        this.query = query;
+    public UsersViewModelFactory(String input) {
+        this.input = input;
     }
 
-    @NonNull
     @NotNull
     @Override
+    @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull @NotNull Class<T> modelClass) {
-        return (T) new UsersViewModel(query);
+        if (modelClass == UsersViewModel.class) {
+            return (T) new UsersViewModel(input);
+        } else {
+            return (T) new UserViewModel(input);
+        }
     }
 }

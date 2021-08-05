@@ -13,7 +13,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="Avatar"
+            android:contentDescription="@string/avatar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
             android:layout_marginLeft="10dp">
 
         <TextView
-                android:text="Name"
+                android:text="@string/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/user_name"
@@ -40,7 +40,7 @@
                 android:textStyle="bold"/>
 
         <TextView
-                android:text="Username"
+                android:text="@string/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/user_username"
@@ -48,7 +48,7 @@
                 android:textSize="12sp"/>
 
         <TextView
-                android:text="Bio"
+                android:text="@string/bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/user_bio"

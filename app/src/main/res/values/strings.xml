@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Github Client</string>
+    <string name="find_a_github_user">Find a GitHub user.</string>
+    <string name="search_on_github">Search on GitHub</string>
+    <string name="avatar">Avatar</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="bio">Bio</string>
+    <string name="company">Company</string>
+    <string name="location">Location</string>
+    <string name="followers">followers</string>
+    <string name="followings">followings</string>
 </resources>

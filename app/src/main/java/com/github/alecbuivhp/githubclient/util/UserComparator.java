@@ -17,7 +17,7 @@ public class UserComparator extends DiffUtil.ItemCallback<SearchUserQuery.Edge> 
         if (oldItemNode == null || newItemNode == null) {
             return false;
         }
-        return ((SearchUserQuery.AsUser) oldItemNode).id().equals(((SearchUserQuery.AsUser) newItemNode).id());
+        return ((SearchUserQuery.AsUser) oldItemNode).login().equals(((SearchUserQuery.AsUser) newItemNode).login());
     }
 
     @Override

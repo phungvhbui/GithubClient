@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.github.alecbuivhp.githubclient">
+
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -9,9 +11,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.GithubClient">
-        <activity android:name=".view.activity.SearchResultActivity">
+        <activity android:name=".view.activity.ShowUserActivity">
         </activity>
-        <activity android:name=".view.activity.MainActivity">
+        <activity
+                android:name=".view.activity.SearchResultActivity"
+                android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+                android:name=".view.activity.MainActivity"
+                android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

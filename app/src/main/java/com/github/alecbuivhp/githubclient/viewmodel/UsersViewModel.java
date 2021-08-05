@@ -7,12 +7,12 @@ import androidx.paging.PagingConfig;
 import androidx.paging.PagingData;
 import androidx.paging.rxjava3.PagingRx;
 import com.github.alecbuivhp.githubclient.SearchUserQuery;
-import com.github.alecbuivhp.githubclient.repository.pagingsource.UsersPagingSource;
+import com.github.alecbuivhp.githubclient.repository.pagesource.UsersPagingSource;
 import io.reactivex.rxjava3.core.Flowable;
 import kotlinx.coroutines.CoroutineScope;
 
 public class UsersViewModel extends ViewModel {
-    public Flowable<PagingData<SearchUserQuery.Edge>> pagingDataFlow;
+    private final Flowable<PagingData<SearchUserQuery.Edge>> pagingDataFlow;
 
     public UsersViewModel(String query) {
         UsersPagingSource usersPagingSource = new UsersPagingSource(query);
@@ -28,8 +28,12 @@ public class UsersViewModel extends ViewModel {
                 () -> usersPagingSource); // set paging source
 
         // inti Flowable
-        pagingDataFlow = PagingRx.getFlowable(pager);
+        this.pagingDataFlow = PagingRx.getFlowable(pager);
         CoroutineScope coroutineScope = ViewModelKt.getViewModelScope(this);
-        PagingRx.cachedIn(pagingDataFlow, coroutineScope);
+        PagingRx.cachedIn(this.pagingDataFlow, coroutineScope);
+    }
+
+    public Flowable<PagingData<SearchUserQuery.Edge>> getPagingDataFlow() {
+        return this.pagingDataFlow;
     }
 }
