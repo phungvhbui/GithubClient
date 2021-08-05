@@ -5,5 +5,5 @@ import com.github.alecbuivhp.githubclient.SearchUserQuery;
 import io.reactivex.rxjava3.core.Observable;
 
 public interface UsersRepository {
-    Observable<Response<SearchUserQuery.Data>> searchUsers(String query, String after);
+    Observable<Response<SearchUserQuery.Data>> searchUsers(String query, String after, int loadSize);
 }

@@ -12,14 +12,14 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class UsersRepositoryImp implements UsersRepository {
     @Override
-    public Observable<Response<SearchUserQuery.Data>> searchUsers(String query, String after) {
+    public Observable<Response<SearchUserQuery.Data>> searchUsers(String query, String after, int pageSize) {
 
         ApolloQueryCall<SearchUserQuery.Data> call = GithubService.getApolloClient()
                 .query(SearchUserQuery
                         .builder()
                         .query(query)
                         .type(SearchType.USER)
-                        .first(15)
+                        .first(pageSize)
                         .after(after)
                         .build());
 

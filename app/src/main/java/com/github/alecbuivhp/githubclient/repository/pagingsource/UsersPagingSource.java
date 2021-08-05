@@ -28,7 +28,7 @@ public class UsersPagingSource extends RxPagingSource<String, SearchUserQuery.Ed
     @Override
     public Single<LoadResult<String, SearchUserQuery.Edge>> loadSingle(@NotNull LoadParams<String> loadParams) {
         try {
-            return usersRepository.searchUsers(query, loadParams.getKey())
+            return usersRepository.searchUsers(query, loadParams.getKey(), loadParams.getLoadSize())
                     .subscribeOn(Schedulers.io())
                     .singleOrError()
                     .map(this::toLoadResult);
@@ -42,7 +42,7 @@ public class UsersPagingSource extends RxPagingSource<String, SearchUserQuery.Ed
     private LoadResult<String, SearchUserQuery.Edge> toLoadResult(Response<SearchUserQuery.Data> result) {
         SearchUserQuery.Data data = result.getData();
         assert data != null;
-        return new LoadResult.Page<>(Objects.requireNonNull(data.search().edges()), data.search().pageInfo().startCursor(), data.search().pageInfo().endCursor());
+        return new LoadResult.Page<>(Objects.requireNonNull(data.search().edges()), null, data.search().pageInfo().endCursor());
     }
 
     @Nullable
