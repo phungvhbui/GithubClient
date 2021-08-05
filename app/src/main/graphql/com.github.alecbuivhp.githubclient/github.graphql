@@ -1,17 +1,20 @@
 query SearchUser($query: String!, $type: SearchType!, $first: Int, $after: String) {
     search(query: $query, type: $type, first: $first, after: $after) {
-        nodes {
-            ... on User {
-                id
-                bio
-                avatarUrl
-                name
-                login
-            }
-        }
         pageInfo {
+            startCursor
             endCursor
             hasNextPage
+        }
+        edges {
+            node {
+                ... on User {
+                    id
+                    name
+                    avatarUrl
+                    login
+                    bio
+                }
+            }
         }
     }
 }
