@@ -46,12 +46,12 @@ public class UsersAdapter extends PagingDataAdapter<SearchUserQuery.Edge, UsersA
             holder.bindUserItem(userNode);
         }
     }
-
+    
     class UserViewHolder extends RecyclerView.ViewHolder {
         View userItem;
 
         public UserViewHolder(@NonNull View userItem) {
-            super(userItem.getRootView());
+            super(userItem);
             this.userItem = userItem;
         }
 

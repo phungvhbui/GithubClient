@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig;
 import androidx.paging.PagingData;
 import androidx.paging.rxjava3.PagingRx;
 import com.github.alecbuivhp.githubclient.SearchUserQuery;
-import com.github.alecbuivhp.githubclient.repository.pagesource.UsersPagingSource;
+import com.github.alecbuivhp.githubclient.repository.pagingsource.UsersPagingSource;
 import io.reactivex.rxjava3.core.Flowable;
 import kotlinx.coroutines.CoroutineScope;
 
@@ -27,12 +27,12 @@ public class UsersViewModel extends ViewModel {
                         20 * 499),// maxSize - Count of total items to be shown in recyclerview
                 () -> usersPagingSource); // set paging source
 
-        // inti Flowable
+        // init Flowable
         this.pagingDataFlow = PagingRx.getFlowable(pager);
         CoroutineScope coroutineScope = ViewModelKt.getViewModelScope(this);
         PagingRx.cachedIn(this.pagingDataFlow, coroutineScope);
     }
-
+    
     public Flowable<PagingData<SearchUserQuery.Edge>> getPagingDataFlow() {
         return this.pagingDataFlow;
     }

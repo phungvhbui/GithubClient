@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.github.alecbuivhp.githubclient.R;
 import com.github.alecbuivhp.githubclient.SearchUserQuery;
 import com.github.alecbuivhp.githubclient.util.UserComparator;
 import com.github.alecbuivhp.githubclient.view.adapter.UsersAdapter;
+import com.github.alecbuivhp.githubclient.view.adapter.UsersLoadingStateAdapter;
 import com.github.alecbuivhp.githubclient.viewmodel.UsersViewModel;
 import com.github.alecbuivhp.githubclient.viewmodel.UsersViewModelFactory;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -42,8 +44,22 @@ public class SearchResultActivity extends AppCompatActivity {
                 )
         );
 
+        SwipeRefreshLayout layout = findViewById(R.id.user_list_layout);
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                usersAdapter.refresh();
+                layout.setRefreshing(false);
+            }
+        });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(usersAdapter);
+        recyclerView.setAdapter(usersAdapter.withLoadStateHeaderAndFooter(
+                new UsersLoadingStateAdapter(v -> {
+                    usersAdapter.retry();
+                }), new UsersLoadingStateAdapter(v -> {
+                    usersAdapter.retry();
+                })));
     }
 
     @Override
