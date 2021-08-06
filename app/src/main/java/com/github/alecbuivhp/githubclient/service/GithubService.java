@@ -9,7 +9,6 @@ import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class GithubService {
     private GithubService() {
@@ -48,8 +47,6 @@ public class GithubService {
 
         private static class SingletonHelper {
             private static final OkHttpClient INSTANCE = new OkHttpClient.Builder()
-                    .writeTimeout(15, TimeUnit.SECONDS)
-                    .readTimeout(15, TimeUnit.SECONDS)
                     .addInterceptor(new NetworkInterceptor())
                     .build();
         }

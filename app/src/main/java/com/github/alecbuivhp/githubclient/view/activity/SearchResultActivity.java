@@ -45,12 +45,9 @@ public class SearchResultActivity extends AppCompatActivity {
         );
 
         SwipeRefreshLayout layout = findViewById(R.id.user_list_layout);
-        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                usersAdapter.refresh();
-                layout.setRefreshing(false);
-            }
+        layout.setOnRefreshListener(() -> {
+            usersAdapter.refresh();
+            layout.setRefreshing(false);
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

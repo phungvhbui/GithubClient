@@ -48,6 +48,10 @@ public class UsersPagingSource extends RxPagingSource<String, SearchUserQuery.Ed
     @Nullable
     @Override
     public String getRefreshKey(@NotNull PagingState<String, SearchUserQuery.Edge> pagingState) {
-        return null;
+        Integer anchorPosition = pagingState.getAnchorPosition();
+        if (anchorPosition == null) {
+            return null;
+        }
+        return Objects.requireNonNull(pagingState.closestPageToPosition(anchorPosition)).getNextKey();
     }
 }

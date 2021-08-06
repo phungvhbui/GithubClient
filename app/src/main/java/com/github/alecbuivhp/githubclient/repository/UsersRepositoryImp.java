@@ -23,7 +23,6 @@ public class UsersRepositoryImp implements UsersRepository {
                         .first(pageSize)
                         .after(after)
                         .build());
-
         return Rx3Apollo.from(call)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

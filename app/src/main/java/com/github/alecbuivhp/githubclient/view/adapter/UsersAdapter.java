@@ -26,7 +26,7 @@ public class UsersAdapter extends PagingDataAdapter<SearchUserQuery.Edge, UsersA
     public void setUserListener(UserListener userListener) {
         this.userListener = userListener;
     }
-
+    
     @NonNull
     @NotNull
     @Override
@@ -46,7 +46,7 @@ public class UsersAdapter extends PagingDataAdapter<SearchUserQuery.Edge, UsersA
             holder.bindUserItem(userNode);
         }
     }
-    
+
     class UserViewHolder extends RecyclerView.ViewHolder {
         View userItem;
 
